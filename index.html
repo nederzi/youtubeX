@@ -1,49 +1,26 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html>
 <head>
   <meta charset="UTF-8">
-  <title>GO — Скачать Shorts</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <style>
-    body {
-      font-family: sans-serif;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      height: 100vh;
-      background: #121212;
-      color: white;
-    }
-    .loading {
-      font-size: 20px;
-      animation: blink 1s infinite;
-    }
-    @keyframes blink {
-      0%, 100% { opacity: 1; }
-      50% { opacity: 0.3; }
-    }
-  </style>
+  <title>GO Скачать</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
-<body>
-  <div class="loading">GO! Загружаем видео...</div>
-
+<body style="background:#111;color:#fff;font-family:sans-serif;text-align:center;padding-top:40vh">
+  Загружаем...
   <script>
-    const params = new URLSearchParams(window.location.search);
-    const sharedUrl = params.get("url");
+    const urlParams = new URLSearchParams(location.search);
+    const sharedUrl = urlParams.get("url");
 
-    if (sharedUrl) {
+    if (!sharedUrl) {
+      document.body.innerText = "Ссылка не найдена.";
+    } else {
       const idMatch = sharedUrl.match(/(?:v=|shorts\/)([a-zA-Z0-9_-]{11})/);
       const videoId = idMatch ? idMatch[1] : null;
+      const videoUrl = `https://youtube.com/watch?v=${videoId}`;
 
-      if (videoId) {
-        const downloadLink = `https://ssyoutube.com/watch?v=${videoId}`;
-        window.location.href = downloadLink;
-      } else {
-        document.body.innerHTML = '<p>Ошибка: не удалось определить ID видео.</p>';
-      }
-    } else {
-      document.body.innerHTML = '<p>Нет переданной ссылки. Используй "Поделиться" → GO</p>';
+      // Открываем сайт и передаём ссылку как параметр
+      const formUrl = `https://ytdl.app/en/?url=${encodeURIComponent(videoUrl)}`;
+      location.href = formUrl;
     }
   </script>
 </body>
