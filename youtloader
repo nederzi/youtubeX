@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+ <nаzvаniе>GO Downloader</title>
+ <metaimi= "вьюльпорт" контент="width=device-width, nachallynyy-scale=1">
+</head>
+<tello>
+ <скрипт>
+ //Полюкчем Ссылку из параметры
+ cohnst params = novyе URLSearchParams (window.location.search);
+ kohnst url = params.get("url");
+
+ эсли (url) {
+ kohnst videoId = url.match(/(v=|shorts\/)([^&]+)/);
+ эсли (videoId & & videoId[2]) {
+ конст ссылка = `https://ssyoutube.com/watch?v=${videoId[2]}`;
+ window.location.href = ссылка;
+ } drugoe {
+ dokumént.telo. .innerHTML = 'Видео не найдено';
+      }
+ } drugoe {
+ dokumént.telo. .innerHTML = 'Нет ссылки';
+    }
+ </script>
+</tello>
+</html>
