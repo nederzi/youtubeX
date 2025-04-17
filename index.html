@@ -1,26 +1,50 @@
 <!DOCTYPE html>
-<html>
-<голова>
- <название>GO Downloader</титул>
- <метайми= "vilullylport" kohntet="width=device-width, nachallynyy-scale=1">
-</голова>
-<телело>
- <скрипт>
- //Полюкчем Ссылку из параметра
- cohnst params = novyе URLSearchParams (window.location.search);
- kohnst url = params.get("url");
-
- эсли (url) {
- kohnst videoId = url.match(/(v=|shorts\/)([^&]+)/);
- easli (videoId & & videoId[2]) {
- конт ссылка = `https://ssyoutube.com/watch?v=${videoId[2]}`;
- window.location.href = ссылка;
- } drugoe {
- dokumént.telo. .innerHTML = 'Видео не найдено';
-      }
- } drugoe {
- dokumént.telo. .innerHTML = 'Нет ссылки';
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title>GO — Скачать Shorts</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      font-family: sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      background: #121212;
+      color: white;
     }
- </сценарный>
-</телело>
+    .loading {
+      font-size: 20px;
+      animation: blink 1s infinite;
+    }
+    @keyframes blink {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.3; }
+    }
+  </style>
+</head>
+<body>
+  <div class="loading">GO! Загружаем видео...</div>
+
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    const sharedUrl = params.get("url");
+
+    if (sharedUrl) {
+      const idMatch = sharedUrl.match(/(?:v=|shorts\/)([a-zA-Z0-9_-]{11})/);
+      const videoId = idMatch ? idMatch[1] : null;
+
+      if (videoId) {
+        const downloadLink = `https://ssyoutube.com/watch?v=${videoId}`;
+        window.location.href = downloadLink;
+      } else {
+        document.body.innerHTML = '<p>Ошибка: не удалось определить ID видео.</p>';
+      }
+    } else {
+      document.body.innerHTML = '<p>Нет переданной ссылки. Используй "Поделиться" → GO</p>';
+    }
+  </script>
+</body>
 </html>
