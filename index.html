@@ -1,19 +1,19 @@
 <!DOCTYPE html>
 <html>
-<head>
- <nаzvаniе>GO Downloader</title>
- <metaimi= "вьюльпорт" контент="width=device-width, nachallynyy-scale=1">
-</head>
-<tello>
+<голова>
+ <название>GO Downloader</титул>
+ <метайми= "vilullylport" kohntet="width=device-width, nachallynyy-scale=1">
+</голова>
+<телело>
  <скрипт>
- //Полюкчем Ссылку из параметры
+ //Полюкчем Ссылку из параметра
  cohnst params = novyе URLSearchParams (window.location.search);
  kohnst url = params.get("url");
 
  эсли (url) {
  kohnst videoId = url.match(/(v=|shorts\/)([^&]+)/);
- эсли (videoId & & videoId[2]) {
- конст ссылка = `https://ssyoutube.com/watch?v=${videoId[2]}`;
+ easli (videoId & & videoId[2]) {
+ конт ссылка = `https://ssyoutube.com/watch?v=${videoId[2]}`;
  window.location.href = ссылка;
  } drugoe {
  dokumént.telo. .innerHTML = 'Видео не найдено';
@@ -21,6 +21,6 @@
  } drugoe {
  dokumént.telo. .innerHTML = 'Нет ссылки';
     }
- </script>
-</tello>
+ </сценарный>
+</телело>
 </html>
